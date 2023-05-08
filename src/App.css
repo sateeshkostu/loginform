@@ -47,9 +47,9 @@ body{
   /* background-color: black; */
   
 }
-.center{
+/* .center{
   background-color: orange;
-}
+} */
 .cardbody{
   /* background-color: gray; */
   background-image: url('https://thumbs.dreamstime.com/b/desk-notepad-to-do-list-pens-light-pink-background-top-view-desk-notepad-to-do-list-pens-light-pink-125175912.jpg');
@@ -74,7 +74,7 @@ table{
   justify-content: space-between;
 }
 .cards{
-  background-color:rgba(5, 107, 31, 0.829);
+  background-color:rgba(5, 66, 107, 0.829);
   display: inline-block;
   padding-left: 5px;
   padding-right: 5px;

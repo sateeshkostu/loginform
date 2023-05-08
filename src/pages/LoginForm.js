@@ -16,7 +16,7 @@ const LoginForm = () => {
       Email:email,
       typedPassword:password
     }
-    await axios.post("http://localhost:2001/signup/logindetails/", body )
+    await axios.post("https://sateeshkostu.github.io/loginform/signup/logindetails/", body )
     .then((response) => {
       console.log(response.data.message);
       alert('login succesfull')
@@ -38,7 +38,7 @@ return (
     {/* <div className='img'>
                     <img src='https://t4.ftcdn.net/jpg/03/57/34/39/360_F_357343965_u58BFcRrziBVMqgt6liwPHJKcIjHsPnc.jpg' height='100%' width='100%' />
                 </div> */}
-    <div className="card" style={{ marginTop: '200px', marginLeft: '500px', width: '500px', fontSize: '20px' }}>
+    <div className="card" style={{ marginTop: '200px', marginLeft: '500px', width: '500px',textAlign:'center', fontSize: '20px' }}>
       <h1>Login Form</h1>
       <p>Please enter your details</p>
       <form style={{ textAlign: 'center', fontSize: '30px' }}>

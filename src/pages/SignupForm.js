@@ -20,7 +20,7 @@ const Signupform = () => {
         Password:password,
         Confirmpassword:confirmPassword
     }
-      await axios.post('http://localhost:2001/signup/signup/',  body )
+      await axios.post('https://sateeshkostu.github.io/loginform/signup/signup/',  body )
       .then((response) => {
         console.log(response.data);
         alert('signup succesfull')

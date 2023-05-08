@@ -42,7 +42,7 @@ const Todo = () => {
         getdetails();
     }, [])
     const getdetails = () => {
-        axios.get("http://localhost:2000/todos/gettodos").then(
+        axios.get("https://sateeshkostu.github.io/loginform/todos/gettodos").then(
             responce => {
                 var filterdata = responce.data.todos.filter(data => {  //filterdata is used to filter the todos from data
                     return data.useremail == useremail  //data.useremail is used to return the data
@@ -62,7 +62,7 @@ const Todo = () => {
             Startdate:Startdate,
             Enddate:Enddate
         }
-        axios.post('http://localhost:2000/todos/todos', body)
+        axios.post('https://sateeshkostu.github.io/loginform/todos/todos', body)
             .then((responce) => {
                 console.log("list has been posted")
                 getdetails()
@@ -76,7 +76,7 @@ const Todo = () => {
     };
     const deletehandler = (id) => {
         alert("you want to delete")
-        axios.delete('http://localhost:2000/todos/deletetodos/' + id)
+        axios.delete('https://sateeshkostu.github.io/loginform/todos/deletetodos/' + id)
             .then((response) => {
                 const newtodos = todos.filter((list) => list.id !== id);
                 setTodoList(newtodos);
@@ -96,7 +96,7 @@ const Todo = () => {
 
     const updatehandler = (id) => {
         
-        axios.put('http://localhost:2000/todos/updatetodos/' + id, { name: newValue, Duration: newduration, Startdate: newstartdate, Enddate: newenddate} )
+        axios.put('https://sateeshkostu.github.io/loginform/todos/updatetodos/' + id, { name: newValue, Duration: newduration, Startdate: newstartdate, Enddate: newenddate} )
             .then(response => {
                 const newtodos = todoList.map(list => {
                     if (list._id === id) {
@@ -140,7 +140,7 @@ const Todo = () => {
                                     <input style={{width:'200px', height:'30px',fontSize:'20px'}}  type="date" value={Enddate} onChange={(e) => setEnddate(e.target.value)} />
                                 </div> &nbsp;
                                 <div>
-                                    <button style={{borderRadius:'10px'}} type="submit" value="Add" name="Add" >ADD</button>
+                                    <button style={{borderRadius:'10px', fontSize:'20px'}} type="submit" value="Add" name="Add" >ADD</button>
                                 </div>
                                 &nbsp;
                             </form>
@@ -166,7 +166,7 @@ const Todo = () => {
                             </div>  &nbsp;
                             
                             <div>
-                                <button style={{borderRadius:'10px'}} type="submit">Update</button>
+                                <button style={{borderRadius:'10px', fontSize:'20px'}} type="submit">Update</button>
                             </div>
                         </form>)}
 

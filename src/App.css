@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+  /* background-color: gray; */
+  background-image: url('https://img.freepik.com/free-vector/geometric-science-education-background-vector-gradient-blue-digital-remix_53876-125993.jpg?w=2000');
+  width: 100%;
+  height: 100%;
+  /* margin-top: 20px; */
+  /* margin-left: 20px; */
+  /* margin-right: 20px; */
+  /* text-align: center; */
+  
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login{
   display: flex;
-  flex-direction: column;
+  height: 100%;
+}
+.img{
+  width: 50%;
+  height: 100vh;
+}
+.card{
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* margin-top: 10px; */
+  /* background-color: cornflowerblue; */
   color: white;
+  width: 50%;
+  border-radius: 20px;
+  
 }
-
-.App-link {
-  color: #61dafb;
+.signup{
+  display: flex;
+  height: 500%;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.img{
+  width: 50%;
+  height: 500%;
+}
+/* .signupcard{
+  background-color: white;
+  width: 50%;
+  text-align: left;
+  align-items: center;
+} */
+.cardtodo{
+  width: 800px;
+  /* height: 1000px; */
+  /* background-color: black; */
+  
+}
+.center{
+  background-color: orange;
+}
+.cardbody{
+  /* background-color: gray; */
+  background-image: url('https://thumbs.dreamstime.com/b/desk-notepad-to-do-list-pens-light-pink-background-top-view-desk-notepad-to-do-list-pens-light-pink-125175912.jpg');
+}
+.cardtitle{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 27px;
+}
+.order{
+  display: block;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.order div{
+  margin-bottom: 10px;
+}
+.order button{
+  justify-content: space-between;
+}
+table{
+  justify-content: space-between;
+}
+.cards{
+  background-color:rgba(5, 107, 31, 0.829);
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 10px;
+  margin-right: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-style: italic;
+  
+  
+  /* justify-content: space-between; */
+  
 }

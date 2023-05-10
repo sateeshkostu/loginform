@@ -25,7 +25,7 @@ const Todo = () => {
     // localStorage.setItem('todos', JSON.stringify(todos));
 
     // useEffect(() => {
-        
+
     //     if (email) {
     //         settodos(JSON.parse(email));
     //     }
@@ -42,7 +42,7 @@ const Todo = () => {
         getdetails();
     }, [])
     const getdetails = () => {
-        axios.get("https://sateeshkostu.github.io/loginform/todos/gettodos").then(
+        axios.get("http://localhost:2000/todos/gettodos").then(
             responce => {
                 var filterdata = responce.data.todos.filter(data => {  //filterdata is used to filter the todos from data
                     return data.useremail == useremail  //data.useremail is used to return the data
@@ -56,27 +56,27 @@ const Todo = () => {
         //submit handler ni declare chesam submit handler ni starting of form lo use chaile //
         e.preventDefault();
         const body = {
-            useremail:useremail,
-            name:task,
-            Duration:Duration,
-            Startdate:Startdate,
-            Enddate:Enddate
+            useremail: useremail,
+            name: task,
+            Duration: Duration,
+            Startdate: Startdate,
+            Enddate: Enddate
         }
-        axios.post('https://sateeshkostu.github.io/loginform/todos/todos', body)
+        axios.post('http://localhost:2000/todos/todos', body)
             .then((responce) => {
                 console.log("list has been posted")
                 getdetails()
                 settask("")
-            setDuration("")
-            setStartdate("")
-            setEnddate("")
+                setDuration("")
+                setStartdate("")
+                setEnddate("")
             })
-            
+
             .catch((error) => console.log(error));
     };
     const deletehandler = (id) => {
         alert("you want to delete")
-        axios.delete('https://sateeshkostu.github.io/loginform/todos/deletetodos/' + id)
+        axios.delete('http://localhost:2000/todos/deletetodos/' + id)
             .then((response) => {
                 const newtodos = todos.filter((list) => list.id !== id);
                 setTodoList(newtodos);
@@ -95,8 +95,8 @@ const Todo = () => {
     // };
 
     const updatehandler = (id) => {
-        
-        axios.put('https://sateeshkostu.github.io/loginform/todos/updatetodos/' + id, { name: newValue, Duration: newduration, Startdate: newstartdate, Enddate: newenddate} )
+
+        axios.put('http://localhost:2000/todos/updatetodos/' + id, { name: newValue, Duration: newduration, Startdate: newstartdate, Enddate: newenddate })
             .then(response => {
                 const newtodos = todoList.map(list => {
                     if (list._id === id) {
@@ -117,81 +117,85 @@ const Todo = () => {
 
     return (
         <>
-            <center className="center">
+            <center className="center1">
                 <div className="cardtodo">
                     <div className="cardbody">
-                        <h1 className="cardtitle">Todo Management Application</h1>
+                        <h1 className="cardtitle" >Todo Management Application</h1> &nbsp;
                         {isclicked ? (
-                            <form onSubmit={submithandler} style={{textAlign:'center', fontSize:'20px', color:'black'}}>
+                            <form onSubmit={submithandler} style={{ textAlign: 'center', fontSize: '20px', color: 'white', fontStyle: 'italic' }}>
                                 <div>
-                                    <label>TaskName:</label>
-                                    <input style={{width:'200px', height:'30px',fontSize:'20px'}} type="text" name="task" value={task} onChange={changehandler} />
+                                    <label><b>TaskName:</b></label>
+                                    <input style={{ width: '200px', height: '30px', fontSize: '20px', borderRadius: '10px' }} type="text" name="task" value={task} onChange={changehandler} />
                                 </div> &nbsp;
                                 <div>
-                                    <label>Duration:</label> &nbsp;
-                                    <input style={{width:'200px', height:'30px',fontSize:'20px'}}  type="text" value={Duration} onChange={(e) => setDuration(e.target.value)} />
+                                    <label><b>Duration:</b></label> &nbsp;
+                                    <input style={{ width: '200px', height: '30px', fontSize: '20px', borderRadius: '10px' }} type="text" value={Duration} onChange={(e) => setDuration(e.target.value)} />
                                 </div> &nbsp;
                                 <div>
-                                    <label>Startdate:</label> &nbsp;
-                                    <input style={{width:'200px', height:'30px',fontSize:'20px'}}  type="date" value={Startdate} onChange={(e) => setStartdate(e.target.value)} />
+                                    <label><b>Startdate:</b></label> &nbsp;
+                                    <input style={{ width: '200px', height: '30px', fontSize: '20px', borderRadius: '10px' }} type="date" value={Startdate} onChange={(e) => setStartdate(e.target.value)} />
                                 </div> &nbsp;
                                 <div>
-                                    <label>Enddate:</label>
-                                    <input style={{width:'200px', height:'30px',fontSize:'20px'}}  type="date" value={Enddate} onChange={(e) => setEnddate(e.target.value)} />
+                                    <label><b>Enddate:</b></label> &nbsp;
+                                    <input style={{ width: '200px', height: '30px', fontSize: '20px', borderRadius: '10px' }} type="date" value={Enddate} onChange={(e) => setEnddate(e.target.value)} />
                                 </div> &nbsp;
                                 <div>
-                                    <button style={{borderRadius:'10px', fontSize:'20px'}} type="submit" value="Add" name="Add" >ADD</button>
+                                    <button style={{ borderRadius: '10px', padding:'10px',width:'200px', fontSize: '30px', textAlign:'center', backgroundColor: 'blue', color: 'white' }} type="submit" value="Add" name="Add" >ADD</button>
                                 </div>
+                                <h4 style={{ fontStyle: 'italic' }}>{useremail}</h4>
                                 &nbsp;
                             </form>
-                        ) : (<form style={{fontSize:'20px'}} onSubmit={(e) => {
+                        ) : (<form style={{ fontSize: '20px' }} onSubmit={(e) => {
                             e.preventDefault();
-                            updatehandler(id); 
+                            updatehandler(id);
                         }}>
                             <div>
-                            <label>TaskName:</label>
-                            <input style={{width:'200px', height:'30px',fontSize:'20px'}}  type="text" name="newValue" value={newValue} onChange={(e) => setNewValue(e.target.value)} />
+                                <label>TaskName:</label>
+                                <input style={{ width: '200px', height: '30px', fontSize: '20px' }} type="text" name="newValue" value={newValue} onChange={(e) => setNewValue(e.target.value)} />
                             </div> &nbsp;
                             <div>
-                            <label>Duration:</label> &nbsp;
-                            <input style={{width:'200px', height:'30px',fontSize:'20px'}}  type="text" name="newduration" value={newduration} onChange={(e) => setnewduration(e.target.value)}/>
+                                <label>Duration:</label> &nbsp;
+                                <input style={{ width: '200px', height: '30px', fontSize: '20px' }} type="text" name="newduration" value={newduration} onChange={(e) => setnewduration(e.target.value)} />
                             </div>  &nbsp;
                             <div>
-                            <label>Startdate:</label>  &nbsp;
-                            <input style={{width:'200px', height:'30px',fontSize:'20px'}}  type="date" name="newstartdate" value={newstartdate} onChange={(e) => setnewstartdate(e.target.value)}/>
+                                <label>Startdate:</label>  &nbsp;
+                                <input style={{ width: '200px', height: '30px', fontSize: '20px' }} type="date" name="newstartdate" value={newstartdate} onChange={(e) => setnewstartdate(e.target.value)} />
                             </div>  &nbsp;
                             <div>
-                            <label>Enddate:</label> &nbsp;
-                            <input style={{width:'200px', height:'30px',fontSize:'20px'}}  type="date" name="newenddate" value={newenddate} onChange={(e) => setnewenddate(e.target.value)}/>
+                                <label>Enddate:</label> &nbsp;
+                                <input style={{ width: '200px', height: '30px', fontSize: '20px' }} type="date" name="newenddate" value={newenddate} onChange={(e) => setnewenddate(e.target.value)} />
                             </div>  &nbsp;
-                            
+
                             <div>
-                                <button style={{borderRadius:'10px', fontSize:'20px'}} type="submit">Update</button>
+                                <button style={{ borderRadius: '10px', padding:'10px',width:'200px', fontSize: '30px', }} type="submit">Update</button>
                             </div>
                         </form>)}
 
-                        {todoList.map(list => (<h4 className="cards" key={list.id} style={{ textAlign: 'center', color: 'white', width:'300px', height:'220px', fontSize:'20px'}}> &nbsp;
-                            {/* <div>{list.useremail}</div> */}
-                            <div>{list.name}</div>
-                            <div>{list.Duration}</div>
-                            <div>{list.Startdate}</div>
-                            <div>{list.Enddate}</div> &nbsp;
-                            <div style={{ justifyContent: 'space-between' }}>
-                                <button onClick={() => {
-                                    setId(list._id);
-                                    setNewValue(list.name);
-                                    setnewduration(list.Duration);
-                                    setnewstartdate(list.Startdate);
-                                    setnewenddate(list.Enddate)
-                                    setisclicked(false)
-                                }} style={{backgroundColor:'blue', borderRadius:'10px', fontSize:'20px'}}>Edit</button>&nbsp;
-                                <button style={{borderRadius:'10px', fontSize:'20px', backgroundColor:'red'}} onClick={() => deletehandler(list._id)}>Delete</button>&nbsp;
-                            </div></h4>))}
+
                         {/* <div style={{ display: 'flex', flexDirection: "column" }}> */}
-                            {/* <Todolist settodos={settodos} todolist={todolist} deletehandler={deletehandler} /> */}
+                        {/* <Todolist settodos={settodos} todolist={todolist} deletehandler={deletehandler} /> */}
                         {/* </div> */}
 
                     </div>
+                </div>
+                <div className="map">
+                    {todoList.map(list => (<h4 className="cards" key={list.id} style={{ textAlign: 'center', color: 'white', width: '300px', height: '300px', fontSize: '20px' }}> &nbsp;
+                        {/* <div>{list.useremail}</div> */}
+                        <div>Taskname:&nbsp;{list.name}</div>
+                        <div>Duration:&nbsp;{list.Duration}</div>
+                        <div>Startdate:&nbsp;{list.Startdate}</div>
+                        <div>Enddate:&nbsp;{list.Enddate}</div> &nbsp;
+                        <div style={{ justifyContent: 'space-between' }}>
+                            <button onClick={() => {
+                                setId(list._id);
+                                setNewValue(list.name);
+                                setnewduration(list.Duration);
+                                setnewstartdate(list.Startdate);
+                                setnewenddate(list.Enddate)
+                                setisclicked(false)
+                            }} style={{ backgroundColor: 'blue', borderRadius: '10px', padding:'10px',width:'200px', fontSize: '30px', color: 'white' }}>Edit</button><br/>
+                            <button style={{ borderRadius: '10px', padding:'10px',width:'200px', fontSize: '30px', backgroundColor: 'red', color: 'white' }} onClick={() => deletehandler(list._id)}>Delete</button>&nbsp;
+                        </div></h4>))}
                 </div>
             </center>
         </>

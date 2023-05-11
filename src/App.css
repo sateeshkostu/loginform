@@ -106,12 +106,17 @@ table{
 align-items: center;
 text-align: center;
 display: flex;
+/* top: 0; */
+/* position: fixed; */
 }
 .map{
   /* display: inline-block; */
   margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  overflow: scroll;
+  max-height: 700px;
+  /* white-space: nowrap; */
 }
 
 @media (max-width:768px) {
@@ -147,6 +152,10 @@ display: flex;
     /* display: flex; */
     flex-direction: column;
     width: 75%;
+    /* text-align: left; */
+  }
+  .form{
+    text-align: left;
   }
 
 }
@@ -157,6 +166,7 @@ display: flex;
     flex-direction: column;
     width: 75%;
     max-height: 700px;
+    text-align: left;
   }
 
 }

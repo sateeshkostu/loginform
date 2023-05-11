@@ -42,7 +42,7 @@ const Todo = () => {
         getdetails();
     }, [])
     const getdetails = () => {
-        axios.get("http://localhost:2000/todos/gettodos").then(
+        axios.get("http://localhost:2001/todos/gettodos").then(
             responce => {
                 var filterdata = responce.data.todos.filter(data => {  //filterdata is used to filter the todos from data
                     return data.useremail == useremail  //data.useremail is used to return the data
@@ -62,7 +62,7 @@ const Todo = () => {
             Startdate: Startdate,
             Enddate: Enddate
         }
-        axios.post('http://localhost:2000/todos/todos', body)
+        axios.post('http://localhost:2001/todos/todos', body)
             .then((responce) => {
                 console.log("list has been posted")
                 getdetails()
@@ -76,7 +76,7 @@ const Todo = () => {
     };
     const deletehandler = (id) => {
         alert("you want to delete")
-        axios.delete('http://localhost:2000/todos/deletetodos/' + id)
+        axios.delete('http://localhost:2001/todos/deletetodos/' + id)
             .then((response) => {
                 const newtodos = todos.filter((list) => list.id !== id);
                 setTodoList(newtodos);
@@ -96,7 +96,7 @@ const Todo = () => {
 
     const updatehandler = (id) => {
 
-        axios.put('http://localhost:2000/todos/updatetodos/' + id, { name: newValue, Duration: newduration, Startdate: newstartdate, Enddate: newenddate })
+        axios.put('http://localhost:2001/todos/updatetodos/' + id, { name: newValue, Duration: newduration, Startdate: newstartdate, Enddate: newenddate })
             .then(response => {
                 const newtodos = todoList.map(list => {
                     if (list._id === id) {
@@ -122,7 +122,7 @@ const Todo = () => {
                     <div className="cardbody">
                         <h1 className="cardtitle" >Todo Management Application</h1> &nbsp;
                         {isclicked ? (
-                            <form onSubmit={submithandler} style={{ textAlign: 'center', fontSize: '20px', color: 'white', fontStyle: 'italic' }}>
+                            <form onSubmit={submithandler} style={{ textAlign: 'center', fontSize: '30px', color: 'white', fontStyle: 'italic' }}>
                                 <div>
                                     <label><b>TaskName:</b></label>
                                     <input style={{ width: '200px', height: '30px', fontSize: '20px', borderRadius: '10px' }} type="text" name="task" value={task} onChange={changehandler} />
@@ -140,7 +140,7 @@ const Todo = () => {
                                     <input style={{ width: '200px', height: '30px', fontSize: '20px', borderRadius: '10px' }} type="date" value={Enddate} onChange={(e) => setEnddate(e.target.value)} />
                                 </div> &nbsp;
                                 <div>
-                                    <button style={{ borderRadius: '10px', padding:'10px',width:'200px', fontSize: '30px', textAlign:'center', backgroundColor: 'blue', color: 'white' }} type="submit" value="Add" name="Add" >ADD</button>
+                                    <button style={{ borderRadius: '10px', padding:'5px',width:'200px', fontSize: '30px', textAlign:'center', backgroundColor: 'blue', color: 'white' }} type="submit" value="Add" name="Add" >ADD</button>
                                 </div>
                                 <h4 style={{ fontStyle: 'italic' }}>{useremail}</h4>
                                 &nbsp;
@@ -193,8 +193,8 @@ const Todo = () => {
                                 setnewstartdate(list.Startdate);
                                 setnewenddate(list.Enddate)
                                 setisclicked(false)
-                            }} style={{ backgroundColor: 'blue', borderRadius: '10px', padding:'10px',width:'200px', fontSize: '30px', color: 'white' }}>Edit</button><br/>
-                            <button style={{ borderRadius: '10px', padding:'10px',width:'200px', fontSize: '30px', backgroundColor: 'red', color: 'white' }} onClick={() => deletehandler(list._id)}>Delete</button>&nbsp;
+                            }} style={{ backgroundColor: 'dodgerblue', borderRadius: '10px', padding:'5px',width:'150px', fontSize: '30px', color: 'white' }}>Edit</button><br/><br/>
+                            <button style={{ borderRadius: '10px', padding:'5px',width:'150px', fontSize: '30px', backgroundColor: 'red', color: 'white' }} onClick={() => deletehandler(list._id)}>Delete</button>&nbsp;
                         </div></h4>))}
                 </div>
             </center>

@@ -41,7 +41,7 @@ const Signupform = () => {
         <div className="signup">
           <div className="card" style={{  fontSize: '20px' }}>
             <h1>Registration Form</h1>
-            <form style={{ textAlign: 'right', fontSize: '30px', color:'black', }}>
+            <form style={{ textAlign: 'right', fontSize: '30px', color:'white', }}>
               <div>
                 <label><b>User Name</b></label> &nbsp;
                 <input style={{ width: '200px', height: '35px', fontSize: '20px' }} type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -61,7 +61,7 @@ const Signupform = () => {
               <div style={{ textAlign: 'center' }}>
                 <button style={{ backgroundColor: "blue", fontSize: '30px', borderRadius: '10px', color: 'white' }} onClick={(e) => handleSubmit(e)}>Signup</button>
               </div>
-              <p className="text-center" style={{color:'black'}}><b>Have already an account</b> <Link to="/LoginForm" style={{ color: 'white' }}><b>LoginForm</b></Link></p>
+              <p className="text-center" style={{color:'white'}}><b>Have already an account</b> <Link to="/LoginForm" style={{ color: 'black' }}><b>LoginForm</b></Link></p>
             </form>
           </div>
         </div>
